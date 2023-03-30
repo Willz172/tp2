@@ -6,9 +6,9 @@ import java.util.Scanner;
 public class Principal {
 
 
-    public static void validerCarteTrance(int nbrTrance){
+    public static void validerCarteTrance(int nbrTrance, int numLigne){
         if(!(nbrTrance >= 0 && nbrTrance <=4)){
-            System.out.println("NOMBRE INVALIDE! ");
+            System.out.println("NOMBRE INVALIDE!" + numLigne);
         }
     }
     public static void main(String[] args) {
@@ -34,7 +34,7 @@ public class Principal {
                 //Carte.validerCarte(nomCarte);
                 if(nomCarte.equals("Trance")){
                     nbrTrance = Integer.parseInt(line.split(" ")[2]);
-                    validerCarteTrance(nbrTrance);
+                    validerCarteTrance(nbrTrance,numLigne);
                 }
             }
 

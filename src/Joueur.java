@@ -56,15 +56,10 @@ public class Joueur {
     public void setPointExperience(int pointExperience) {
         this.pointExperience += pointExperience;
     }
-    public static void validerJoueur(int numJoueur){
+    public static void validerJoueur(int numJoueur, int numLigne){
         if(numJoueur != 0 || numJoueur != 1){
-            System.err.println("NUMERO JOUEUR INCORRECT! ");
+            System.err.println("NUMERO JOUEUR INCORRECT!" + numLigne);
             System.exit(-1);
-        }
-    }
-    public static void validerCarteEnMain(int carteEnMain){
-        if(carteEnMain < 0){
-            System.out.println("Vous n'avez plus de carte en main!");
         }
     }
 
