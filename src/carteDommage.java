@@ -1,9 +1,6 @@
-public class carteDommage extends Carte{
-    public carteDommage() {
-        super(nomCarte);
-    }
+public class carteDommage{
 
-    public void effetDePremierType(Joueur jCrt, Joueur jAdv, int numLigne, int nbrTrance) {
+    public static void effetDePremierType(Joueur jCrt, String nomCarte, int numLigne) {
 
         if (jCrt.getCarteEnMain() > 0) {
 
@@ -24,7 +21,7 @@ public class carteDommage extends Carte{
         }
     }
 
-    public void effetDeDeuxiemeType(Joueur jCrt, Joueur jAdv){
+    public static void effetDeDeuxiemeType(Joueur jCrt, Joueur jAdv, String nomCarte){
 
 
         if (nomCarte.equals("CoupDroit")) {
