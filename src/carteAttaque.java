@@ -4,78 +4,84 @@ public class carteAttaque extends Carte {
         super(nomCarte);
     }
 
-    public static void effetDePremierType(Joueur jCrt, Joueur jAdv) {
+    public static void effetDePremierType(Joueur jCrt, Joueur jAdv, int numLigne) {
         int nbrTrance = 0;
 
         if (jCrt.getCarteEnMain() > 0 && jCrt.getPointAttaque() > 0) {
 
-                if(nomCarte.equals("Inspiration")) {
+            switch (nomCarte){
+
+                case "Inspiration":
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() - 1);
                     jCrt.setPointAttaque(jCrt.getPointAttaque() - 1);
 
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() + 2);
 
-                } else if (nomCarte.equals("NouvelleEnergie")) {
+                case "NouvelleEnergie":
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() - 1);
                     jCrt.setPointAttaque(jCrt.getPointAttaque() - 1);
 
                     jCrt.setPointAttaque(jCrt.getPointAttaque() + 2);
 
-                } else if (nomCarte.equals("Illumination")) {
+                case "Illumination":
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() - 1);
                     jCrt.setPointAttaque(jCrt.getPointAttaque() - 1);
 
                     jCrt.setCarteEnMain((Math.max(jCrt.getCarteEnMain(), 7)));
 
-                } else if (nomCarte.equals("RegardeUneDistraction")) {
+                case "RegardeUneDistraction":
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() - 1);
                     jCrt.setPointAttaque(jCrt.getPointAttaque() - 1);
 
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() + 1);
                     jCrt.setPointAttaque(jCrt.getPointAttaque() + 1);
 
-                } else if (nomCarte.equals("CalmeAvantLaTempete")) {
+                case "CalmeAvantLaTempete":
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() - 1);
                     jCrt.setPointAttaque(jCrt.getPointAttaque() - 1);
 
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() + 1);
                     jCrt.setPointAttaque(jCrt.getPointAttaque() + 1);
 
-                } else if (nomCarte.equals("TousPourUn")) {
+                case "TousPourUn":
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() - 1);
                     jCrt.setPointAttaque(jCrt.getPointAttaque() - 1);
 
                     jCrt.setCarteEnMain(0);
 
-                } else if (nomCarte.equals("PetitVoleur")) {
+                case "PetitVoleur":
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() - 1);
                     jCrt.setPointAttaque(jCrt.getPointAttaque() - 1);
 
                     jAdv.setCarteEnMain(Math.max(0, jAdv.getCarteEnMain() - 3));
 
-                } else if (nomCarte.equals("PetitePause")) {
+                case "PetitePause":
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() - 1);
                     jCrt.setPointAttaque(jCrt.getPointAttaque() - 1);
 
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() + 1);
                     jAdv.setPointAttaque(jAdv.getPointAttaque() - 1);
 
-                } else if (nomCarte.equals("BotteSecrete")) {
+                case "BotteSecrete":
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() - 1);
                     jCrt.setPointAttaque(jCrt.getPointAttaque() - 1);
 
-                } else if (nomCarte.equals("ApprendreParMesErreurs")) {
+                case "ApprendreParMesErreurs":
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() - 1);
                     jCrt.setPointAttaque(jCrt.getPointAttaque() - 1);
 
-                } else if (nomCarte.equals("Trance")) {
-                        jCrt.setCarteEnMain(jCrt.getCarteEnMain() -1);
-                        jCrt.setPointAttaque(jCrt.getPointAttaque() -1);
+                case "Trance":
+                    jCrt.setCarteEnMain(jCrt.getCarteEnMain() -1);
+                    jCrt.setPointAttaque(jCrt.getPointAttaque() -1);
 
-                        jCrt.setCarteEnMain(jCrt.getCarteEnMain() -nbrTrance);
+                    jCrt.setCarteEnMain(jCrt.getCarteEnMain() -nbrTrance);
 
+            }
 
-                }
+        } else {
+            System.out.println("Ligne: " + numLigne +" Joueur: " +
+                    jCrt.getNumJoueur() + " carte: " + nomCarte
+                    + " NOMBRE DE CARTE EN MAIN INSUFFISANT.");
         }
     }
     public static void effetDeDeuxiemeType(Joueur jCrt, Joueur jAdv) {

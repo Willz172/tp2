@@ -27,16 +27,23 @@ public class Principal {
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
             String line;
-            while ((line = br.readLine()) != null) {
-                int numJoueur = Integer.parseInt(line.split(" ")[0]);
-                //Joueur.validerJoueur(numJoueur);
-                String nomCarte  = (line.split(" ")[1]);
-                //Carte.validerCarte(nomCarte);
-                if(nomCarte.equals("Trance")){
-                    nbrTrance = Integer.parseInt(line.split(" ")[2]);
-                    validerCarteTrance(nbrTrance,numLigne);
+
+            try{
+                while ((line = br.readLine()) != null) {
+                    int numJoueur = Integer.parseInt(line.split(" ")[0]);
+                    Joueur.validerJoueur(numJoueur, numLigne);
+                    String nomCarte  = (line.split(" ")[1]);
+                    Carte.validerCarte(nomCarte, numLigne);
+                    if(nomCarte.equals("Trance")){
+                        nbrTrance = Integer.parseInt(line.split(" ")[2]);
+                        validerCarteTrance(nbrTrance,numLigne);
+                    }
                 }
+            }catch (Exception exception){
+                System.err.println("Fichier non trouver");
+                System.exit(-1);
             }
+
 
            /* File fichierTexte = new File (nomFichier);
             Scanner scanner2 = new Scanner(fichierTexte);
