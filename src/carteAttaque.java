@@ -1,40 +1,29 @@
-public class carteAttaque extends Carte {
+public class carteAttaque {
 
-    public carteAttaque() {
-        super(nomCarte);
-    }
-
-    public static void attaque(Joueur jCrt, Joueur jAdv, int numLigne){
-        int nbrTrance = 0;
-
-        if(jCrt.getPointAttaque() > 0){
+    public static void effetDePremierType(Joueur jCrt, Joueur jAdv, String nomCarte, int numLigne){
+        if(jCrt.getPointAttaque() > 0 && jCrt.getCarteEnMain()>0){
             switch (nomCarte){
-
                 case "Inspiration" :
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() - 1);
                     jCrt.setPointAttaque(jCrt.getPointAttaque() - 1);
-
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() + 2);
                     break;
 
                 case "NouvelleEnergie" :
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() - 1);
                     jCrt.setPointAttaque(jCrt.getPointAttaque() - 1);
-
                     jCrt.setPointAttaque(jCrt.getPointAttaque() + 2);
                     break;
 
                 case "Illumination":
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() - 1);
                     jCrt.setPointAttaque(jCrt.getPointAttaque() - 1);
-
                     jCrt.setCarteEnMain((Math.max(jCrt.getCarteEnMain(), 7)));
                     break;
 
                 case "RegardeUneDistraction", "CalmeAvantLaTempete":
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() - 1);
                     jCrt.setPointAttaque(jCrt.getPointAttaque() - 1);
-
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() + 1);
                     jCrt.setPointAttaque(jCrt.getPointAttaque() + 1);
                     break;
@@ -42,14 +31,12 @@ public class carteAttaque extends Carte {
                 case "TousPourUn":
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() - 1);
                     jCrt.setPointAttaque(jCrt.getPointAttaque() - 1);
-
                     jCrt.setCarteEnMain(0);
                     break;
 
                 case "PetitVoleur":
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() - 1);
                     jCrt.setPointAttaque(jCrt.getPointAttaque() - 1);
-
                     jAdv.setCarteEnMain(Math.max(0, jAdv.getCarteEnMain() - 3));
                     break;
 
@@ -65,17 +52,6 @@ public class carteAttaque extends Carte {
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() - 1);
                     jCrt.setPointAttaque(jCrt.getPointAttaque() - 1);
                     break;
-
-                case "Trance":
-                    jCrt.setCarteEnMain(jCrt.getCarteEnMain() -1);
-                    jCrt.setPointAttaque(jCrt.getPointAttaque() -1);
-
-                    jCrt.setCarteEnMain(jCrt.getCarteEnMain() -nbrTrance);
-                    break;
-
-                default:
-                    break;
-
             }
 
         } else {
@@ -85,18 +61,26 @@ public class carteAttaque extends Carte {
         }
     }
 
-    public static void effetDePremierType(Joueur jCrt, Joueur jAdv, int numLigne) {
+    public static void effetDePremierTypeTrance(Joueur jCrt, Joueur jAdv, int nbrTrance, String nomCarte, int numLigne) {
+            if(nbrTrance<0&&nbrTrance>4){
+                if(jCrt.getPointAttaque() > 0 && jCrt.getCarteEnMain()>nbrTrance){
+                    jCrt.setCarteEnMain(jCrt.getCarteEnMain() -1);
+                    jCrt.setPointAttaque(jCrt.getPointAttaque() -1);
+                    jCrt.setCarteEnMain(jCrt.getCarteEnMain() -nbrTrance);
+                }else{
+                    System.out.println("Ligne: " + numLigne +" Joueur: " +
+                            jCrt.getNumJoueur() + " carte: " + nomCarte
+                            + " NOMBRE DE CARTE EN MAIN INSUFFISANT.");
+                }
 
-        if (jCrt.getCarteEnMain() > 0) {
-            attaque( jCrt, jAdv, numLigne);
+            }else{
+                System.out.println("Ligne: " + numLigne +" Joueur: " +
+                        jCrt.getNumJoueur() + " carte: " + nomCarte
+                        + " NOMBRE SUIVANT LA CARTE TRANCE INCORRECT");
+            }
 
-        } else {
-            System.out.println("Ligne: " + numLigne +" Joueur: " +
-                    jCrt.getNumJoueur() + " carte: " + nomCarte
-                    + " NOMBRE DE CARTE EN MAIN INSUFFISANT.");
-        }
     }
-    public static void effetDeDeuxiemeType(Joueur jCrt, Joueur jAdv) {
+    public static void effetDeDeuxiemeType(Joueur jCrt, Joueur jAdv, String nomCarte) {
 
         switch (nomCarte){
 

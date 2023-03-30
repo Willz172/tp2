@@ -1,9 +1,5 @@
-public class carteRiposte extends Carte {
-    public carteRiposte() {
-        super(nomCarte);
-    }
-
-    public static void effetDePremierType(Joueur jCrt, Joueur jAdv, int numLigne) {
+public class carteRiposte  {
+    public static void effetDePremierType(Joueur jCrt, String nomCarte, int numLigne) {
 
         if (jCrt.getCarteEnMain() > 0) {
 
@@ -21,7 +17,7 @@ public class carteRiposte extends Carte {
         }
     }
 
-    public static void effetDeDeuxiemeType(Joueur jCrt, Joueur jAdv){
+    public static void effetDeDeuxiemeType(Joueur jCrt, Joueur jAdv, String nomCarte){
 
 
         if (nomCarte.equals("Esquive")) {

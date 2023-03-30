@@ -1,20 +1,16 @@
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Scanner;
 
 public class Principal {
 
-
-    public static void validerCarteTrance(int nbrTrance, int numLigne){
-        if(!(nbrTrance >= 0 && nbrTrance <=4)){
-            System.out.println("NOMBRE INVALIDE!" + numLigne);
-        }
-    }
+    static Deque<String> pile = new ArrayDeque<>();
     public static void main(String[] args) {
         File file;
-        int numLigne = 0;
-        int nbrTrance;
+        int numLigne = 1;
         Joueur joueur1 = new Joueur(0);
         Joueur joueur2 = new Joueur(1);
 
@@ -27,19 +23,35 @@ public class Principal {
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
             String line;
-
-
                 while ((line = br.readLine()) != null) {
+                    pile.addLast(line);
                     int numJoueur = Integer.parseInt(line.split(" ")[0]);
                     Joueur.validerJoueur(numJoueur, numLigne);
+                    Joueur joueurCo = numJoueur==0?joueur1:joueur2;
+                    Joueur joueurAv = numJoueur==0?joueur1:joueur2;
                     String nomCarte  = (line.split(" ")[1]);
                     Carte.validerCarte(nomCarte, numLigne);
-                    if(nomCarte.equals("Trance")){
-                        nbrTrance = Integer.parseInt(line.split(" ")[2]);
-                        validerCarteTrance(nbrTrance,numLigne);
-                    }
-                }
+                    switch (nomCarte){
+                        case "Inspiration", "NouvelleEnergie", "Illumination", "RegardeUneDistraction", "CalmeAvantLaTempete", "TousPourUn", "PetitVoleur", "PetitePause",  "BotteSecrete", "ApprendreParMesErreurs" -> {
+                            carteAttaque.effetDePremierType(joueurCo,joueurAv,nomCarte,numLigne);
+                        }
+                        case "CoupDroit", "Fouette", "Fleche" -> {
+                            carteDommage.effetDePremierType(joueurCo,nomCarte,numLigne);
+                        }
+                        case "Oups", "JaiCompris" -> {
+                            carteExperience.effetDePremierType(joueurCo,nomCarte,numLigne);
+                        }
+                        case "Esquive", "Vitesse" -> {
+                            carteRiposte.effetDePremierType(joueurCo,nomCarte,numLigne);
+                        }
+                        case "Trance"->{
+                            int nbrTrance = Integer.parseInt(line.split(" ")[2]);
+                            carteAttaque.effetDePremierTypeTrance(joueurCo,joueurAv,nbrTrance,nomCarte,numLigne);
 
+                        }
+                    }
+                    numLigne++;
+                }
 
         } catch (Exception ex) {
             System.err.println("Fichier non trouver");

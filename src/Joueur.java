@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Joueur {
     int numJoueur;
-    ArrayList <Integer> carteEnMain = new ArrayList<>(5);
+   int carteEnMain = 5;
     int pointAttaque = 1;
     int pointDommage;
     int pointExperience;
