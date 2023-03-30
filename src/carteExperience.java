@@ -4,7 +4,7 @@ public class carteExperience extends Carte {
         super(nomCarte);
     }
 
-    public void effetDePremierType(Joueur jCrt, Joueur jAdv, int numLigne){
+    public void effetDePremierType(Joueur jCrt, Joueur jAdv, int numLigne,int nbrTrance){
 
         if (jCrt.getCarteEnMain() > 0) {
 

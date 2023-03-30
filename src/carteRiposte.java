@@ -3,15 +3,18 @@ public class carteRiposte extends Carte {
         super(nomCarte);
     }
 
-    public void effetDePremierType(Joueur jCrt, Joueur jAdv, int numLigne) {
+    public void effetDePremierType(Joueur jCrt, Joueur jAdv, int numLigne, int nbrTrance) {
 
         if (jCrt.getCarteEnMain() > 0) {
 
              if (nomCarte.equals("Esquive")) {
+                 Joueur.carteJouer.push("Esquive");
                  jCrt.setCarteEnMain(jCrt.getCarteEnMain() - 1);
 
              } else if (nomCarte.equals("Vitesse")) {
+                 Joueur.carteJouer.push("Vitesse");
                  jCrt.setCarteEnMain(jCrt.getCarteEnMain() - 1);
+
              }
 
         }else{
@@ -23,12 +26,12 @@ public class carteRiposte extends Carte {
 
     public void effetDeDeuxiemeType(Joueur jCrt, Joueur jAdv){
 
-
         if (nomCarte.equals("Esquive")) {
-            //Enlever (dépiler) la carte au sommet.
+             Joueur.carteJouer.pop();
 
         }else if (nomCarte.equals("Vitesse")) {
-            //La carte au sommet est doublée (une copie de la carte au sommet est empilée).
+            String sommet = Joueur.carteJouer.peek();
+            Joueur.carteJouer.push(sommet);
 
         }
     }

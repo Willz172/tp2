@@ -14,7 +14,7 @@ public abstract class Carte {
     public void setNomCarte(String nomCarte) {
         this.nomCarte = nomCarte;
     }
-    public abstract void effetDePremierType(Joueur jCrt, Joueur jAdv, int numLigne);
+    public abstract void effetDePremierType(Joueur jCrt, Joueur jAdv, int numLigne,int nbrTrance);
     public abstract void effetDeDeuxiemeType(Joueur jCrt, Joueur jAdv);
 
     public static ArrayList carte = new ArrayList<>(Arrays.asList("Inspiration",

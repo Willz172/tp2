@@ -8,7 +8,7 @@ public class Joueur {
     int pointAttaque;
     int pointDommage;
     int pointExperience;
-    Deque<String> carteMain;
+    static Deque<String> carteJouer;
 
     public Joueur(int numJoueur, int carteEnMain, int pointAttaque,
                   int pointDommage, int pointExperience){
@@ -22,7 +22,7 @@ public class Joueur {
 
     public Joueur(int numJoueur){
         this(numJoueur,5,1,0,0);
-        this.carteMain = new ArrayDeque<>();
+        this.carteJouer = new ArrayDeque<>();
     }
 
     public int getNumJoueur() {
