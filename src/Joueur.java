@@ -1,6 +1,8 @@
+import java.util.ArrayList;
+
 public class Joueur {
     int numJoueur;
-    int carteEnMain = 5;
+    ArrayList <Integer> carteEnMain = new ArrayList<>(5);
     int pointAttaque = 1;
     int pointDommage;
     int pointExperience;

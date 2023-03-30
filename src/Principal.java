@@ -40,24 +40,7 @@ public class Principal {
                     }
                 }
 
-           /* File fichierTexte = new File (nomFichier);
-            Scanner scanner2 = new Scanner(fichierTexte);
-            String uneLigne = "";
 
-            while(scanner2.hasNextLine()){
-                numLigne++;
-                uneLigne = scanner2.nextLine();
-
-                String [] tabLigne = uneLigne.split("");
-                int numJoueur = Integer.parseInt(tabLigne[0]);
-                //Joueur.validerJoueur(numJoueur);
-                String nomCarte  = (tabLigne[1]);
-                //Carte.validerCarte(nomCarte);
-                if(nomCarte.equals("Trance")){
-                    nbrTrance = Integer.parseInt(tabLigne[2]);
-                    validerCarteTrance(nbrTrance);
-                }
-            }*/
         } catch (Exception ex) {
             System.err.println("Fichier non trouver");
             System.exit(-1);
