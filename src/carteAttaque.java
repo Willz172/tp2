@@ -85,9 +85,9 @@ public class carteAttaque extends Carte {
         }
     }
 
-    public static void effetDePremierType(Joueur jCrt, Joueur jAdv, int numLigne) {
+    public void effetDePremierType(Joueur jCrt, Joueur jAdv, int numLigne) {
 
-        if (jCrt.getCarteEnMain() > 0) {
+        if (0 < jCrt.getCarteEnMain()) {
             attaque( jCrt, jAdv, numLigne);
 
         } else {
@@ -96,7 +96,7 @@ public class carteAttaque extends Carte {
                     + " NOMBRE DE CARTE EN MAIN INSUFFISANT.");
         }
     }
-    public static void effetDeDeuxiemeType(Joueur jCrt, Joueur jAdv) {
+    public void effetDeDeuxiemeType(Joueur jCrt, Joueur jAdv) {
 
         switch (nomCarte){
 

@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-public class Carte {
+public abstract class Carte {
     static String nomCarte;
 
     public Carte( String nomCarte) {
@@ -14,6 +14,8 @@ public class Carte {
     public void setNomCarte(String nomCarte) {
         this.nomCarte = nomCarte;
     }
+    public abstract void effetDePremierType(Joueur jCrt, Joueur jAdv, int numLigne);
+    public abstract void effetDeDeuxiemeType(Joueur jCrt, Joueur jAdv);
 
     public static ArrayList carte = new ArrayList<>(Arrays.asList("Inspiration",
             "NouvelleEnergie", "Illumination", "RegardeUneDistraction", "CalmeAvantLaTempete",
@@ -23,7 +25,7 @@ public class Carte {
 
     public static void validerCarte(String nomCarte, int numLigne) {
         if (!(nomCarte.equals(carte))) {
-            System.err.println("NOM DE LA CARTE INCORRECTE!" + numLigne);
+            System.err.println("NOM DE LA CARTE INCORRECTE!" + "Ligne:" + numLigne);
             System.exit(-1);
         }
     }

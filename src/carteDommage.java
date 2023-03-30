@@ -3,7 +3,7 @@ public class carteDommage extends Carte{
         super(nomCarte);
     }
 
-    public static void effetDePremierType(Joueur jCrt, Joueur jAdv, int numLigne) {
+    public void effetDePremierType(Joueur jCrt, Joueur jAdv, int numLigne) {
 
         if (jCrt.getCarteEnMain() > 0) {
 
@@ -24,7 +24,7 @@ public class carteDommage extends Carte{
         }
     }
 
-    public static void effetDeDeuxiemeType(Joueur jCrt, Joueur jAdv){
+    public void effetDeDeuxiemeType(Joueur jCrt, Joueur jAdv){
 
 
         if (nomCarte.equals("CoupDroit")) {

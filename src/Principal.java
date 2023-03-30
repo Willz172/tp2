@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
 
@@ -28,8 +29,7 @@ public class Principal {
             BufferedReader br = new BufferedReader(fr);
             String line;
 
-
-                while ((line = br.readLine()) != null) {
+            while ((line = br.readLine()) != null) {
                     int numJoueur = Integer.parseInt(line.split(" ")[0]);
                     Joueur.validerJoueur(numJoueur, numLigne);
                     String nomCarte  = (line.split(" ")[1]);
@@ -38,7 +38,8 @@ public class Principal {
                         nbrTrance = Integer.parseInt(line.split(" ")[2]);
                         validerCarteTrance(nbrTrance,numLigne);
                     }
-                }
+            }
+
 
 
         } catch (Exception ex) {

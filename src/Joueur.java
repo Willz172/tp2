@@ -1,13 +1,18 @@
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 
 public class Joueur {
     int numJoueur;
-    ArrayList <Integer> carteEnMain = new ArrayList<>(5);
-    int pointAttaque = 1;
+    int carteEnMain;
+    int pointAttaque;
     int pointDommage;
     int pointExperience;
+    Deque<String> carteMain;
 
-    public Joueur(int numJoueur) {
+    public Joueur(int numJoueur, int carteEnMain, int pointAttaque,
+                  int pointDommage, int pointExperience){
+
         this.numJoueur = numJoueur;
         this.carteEnMain = carteEnMain;
         this.pointAttaque = pointAttaque;
@@ -15,8 +20,9 @@ public class Joueur {
         this.pointExperience = pointExperience;
     }
 
-    public Joueur() {
-
+    public Joueur(int numJoueur){
+        this(numJoueur,5,1,0,0);
+        this.carteMain = new ArrayDeque<>();
     }
 
     public int getNumJoueur() {
@@ -60,7 +66,7 @@ public class Joueur {
     }
     public static void validerJoueur(int numJoueur, int numLigne){
         if(numJoueur != 0 || numJoueur != 1){
-            System.err.println("NUMERO JOUEUR INCORRECT!" + numLigne);
+            System.err.println("NUMERO JOUEUR INCORRECT!" + "Ligne:" + numLigne);
             System.exit(-1);
         }
     }
