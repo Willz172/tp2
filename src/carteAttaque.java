@@ -4,11 +4,10 @@ public class carteAttaque extends Carte {
         super(nomCarte);
     }
 
-    public static void effetDePremierType(Joueur jCrt, Joueur jAdv, int numLigne) {
+    public static void attaque(Joueur jCrt, Joueur jAdv, int numLigne){
         int nbrTrance = 0;
 
-        if (jCrt.getCarteEnMain() > 0 && jCrt.getPointAttaque() > 0) {
-
+        if(jCrt.getPointAttaque() > 0){
             switch (nomCarte){
 
                 case "Inspiration":
@@ -75,8 +74,19 @@ public class carteAttaque extends Carte {
                     jCrt.setPointAttaque(jCrt.getPointAttaque() -1);
 
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() -nbrTrance);
-
             }
+
+        } else {
+            System.out.println("Ligne: " + numLigne +" Joueur: " +
+                    jCrt.getNumJoueur() + " carte: " + nomCarte
+                    + " NOMBRE DE POINT D'ATTAQUE INSUFFISANT.");
+        }
+    }
+
+    public static void effetDePremierType(Joueur jCrt, Joueur jAdv, int numLigne) {
+
+        if (jCrt.getCarteEnMain() > 0) {
+            attaque( jCrt, jAdv, numLigne);
 
         } else {
             System.out.println("Ligne: " + numLigne +" Joueur: " +
@@ -86,36 +96,38 @@ public class carteAttaque extends Carte {
     }
     public static void effetDeDeuxiemeType(Joueur jCrt, Joueur jAdv) {
 
-            if(nomCarte.equals("CalmeAvantLaTempete")) {
+        switch (nomCarte){
+
+            case "CalmeAvantLaTempete":
                 jCrt.setPointExperience(jCrt.getPointExperience() + 1);
 
-            } else if (nomCarte.equals("PetitVoleur")) {
+            case "PetitVoleur":
                 jCrt.setPointExperience(jCrt.getPointExperience() + 1);
 
-            } else if (nomCarte.equals("TousPourUn")) {
+            case "TousPourUn":
                 jCrt.setPointExperience(jCrt.getPointExperience() + 3);
 
-            } else if (nomCarte.equals("ApprendreParMesErreurs")) {
+            case "ApprendreParMesErreurs":
                 jCrt.setPointExperience(jCrt.getPointExperience() + 3);
                 jCrt.setPointDommage(jCrt.getPointDommage() + 1);
 
-            } else if (nomCarte.equals("BotteSecrete")) {
+            case "BotteSecrete":
                 jCrt.setPointDommage(jCrt.getPointDommage() + 1);
                 jAdv.setPointDommage(jAdv.getPointDommage() + 3);
 
-            } else if (nomCarte.equals("NouvelleEnergie")) {
+            case "NouvelleEnergie":
 
-            } else if (nomCarte.equals("Inspiration")) {
+            case "Inspiration":
 
-            } else if (nomCarte.equals("Illumination")) {
+            case "Illumination":
 
-            } else if (nomCarte.equals("RegardeUneDistraction")) {
+            case "RegardeUneDistraction":
 
-            } else if (nomCarte.equals("PetitePause")) {
+            case "PetitePause":
 
-            } else if (nomCarte.equals("Trance")) {
+            case "Trance":
 
-            }
+        }
     }
     /*"Inspiration",
             "NouvelleEnergie", "Illumination", "RegardeUneDistraction", "CalmeAvantLaTempete",
@@ -123,7 +135,4 @@ public class carteAttaque extends Carte {
             "ApprendreParMesErreurs", "CoupDroit", "Fouette", "Fleche", "Oups",
             "JaiCompris", "Esquive", "Vitesse" */
 
-    public static void Inspiration (Joueur jCrt, Joueur jAdv, int numLigne){
-
-    }
 }
