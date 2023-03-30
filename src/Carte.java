@@ -27,10 +27,4 @@ public class Carte {
             System.exit(-1);
         }
     }
-
-     /*"Inspiration", "NouvelleEnergie", "Illumination",
-            "RegardeUneDistraction", "CalmeAvantLaTempete", "TousPourUn", "PetitVoleur",
-            "PetitePause", "Trance", "BotteSecrete", "ApprendreParMesErreurs", "CoupDroit",
-            "Fouette", "Fleche", "Oups", "JaiCompris", "Esquive", "Vitesse"*/
-
 }

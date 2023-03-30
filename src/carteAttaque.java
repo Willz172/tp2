@@ -7,7 +7,7 @@ public class carteAttaque extends Carte {
     public static void effetDePremierType(Joueur jCrt, Joueur jAdv) {
         int nbrTrance = 0;
 
-        while (jCrt.getCarteEnMain() > 0 && jCrt.getPointAttaque() > 0) {
+        if (jCrt.getCarteEnMain() > 0 && jCrt.getPointAttaque() > 0) {
 
                 if(nomCarte.equals("Inspiration")) {
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() - 1);

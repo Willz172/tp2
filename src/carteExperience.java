@@ -4,9 +4,9 @@ public class carteExperience extends Carte {
         super(nomCarte);
     }
 
-    public static void effetDePremierType(Joueur jCrt, Joueur jAdv){
+    public static void effetDePremierType(Joueur jCrt, Joueur jAdv, int numLigne){
 
-        while (jCrt.getCarteEnMain() > 0) {
+        if (jCrt.getCarteEnMain() > 0) {
 
             if (nomCarte.equals("Oups")) {
                 jCrt.setCarteEnMain(jCrt.getCarteEnMain() - 1);
@@ -15,6 +15,10 @@ public class carteExperience extends Carte {
                 jCrt.setCarteEnMain(jCrt.getCarteEnMain() - 1);
 
             }
+        } else {
+            System.out.println("Ligne: " + numLigne +" Joueur: " +
+                    jCrt.getNumJoueur() + " carte: " + nomCarte
+                    + " NOMBRE DE CARTE EN MAIN INSUFFISANT.");
         }
     }
 

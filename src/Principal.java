@@ -13,7 +13,7 @@ public class Principal {
     }
     public static void main(String[] args) {
         File file;
-        int numLigne = 1;
+        int numLigne = 0;
         int nbrTrance;
         Joueur joueur1 = new Joueur(0);
         Joueur joueur2 = new Joueur(1);
