@@ -111,4 +111,13 @@ public class carteAttaque extends Carte {
 
             }
     }
+    /*"Inspiration",
+            "NouvelleEnergie", "Illumination", "RegardeUneDistraction", "CalmeAvantLaTempete",
+            "TousPourUn", "PetitVoleur", "PetitePause", "Trance", "BotteSecrete",
+            "ApprendreParMesErreurs", "CoupDroit", "Fouette", "Fleche", "Oups",
+            "JaiCompris", "Esquive", "Vitesse" */
+
+    public static void Inspiration (Joueur jCrt, Joueur jAdv, int numLigne){
+
+    }
 }
