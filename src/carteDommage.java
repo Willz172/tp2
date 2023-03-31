@@ -41,7 +41,6 @@ public abstract class carteDommage{
      */
     public static void effetDeDeuxiemeType(Joueur jCrt, Joueur jAdv, String nomCarte){
 
-        if (jCrt.getCarteEnMain() > 0){
             if (nomCarte.equals("CoupDroit")) {
                 jAdv.setPointDommage(jAdv.getPointDommage() +1);
 
@@ -53,5 +52,4 @@ public abstract class carteDommage{
 
             }
         }
-    }
 }

@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Scanner;
@@ -9,7 +7,7 @@ public class Principal {
 
     static Deque<String> pile = new ArrayDeque<>();
     static Deque<String> pile2 = new ArrayDeque<>();
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         File file;
         int numLigne = 1;
         Joueur joueur1 = new Joueur(0);
@@ -55,38 +53,39 @@ public class Principal {
                         }
                     }
                     numLigne++;
+                }
+            while (!(pile.isEmpty())){
+                String linepile = pile.removeLast();
+                int numJoueur = Integer.parseInt(linepile.split(" ")[0]);
+                Joueur joueurCo = numJoueur==0?joueur1:joueur2;
+                Joueur joueurAv = numJoueur==0?joueur1:joueur2;
+                String nomCarte  = (linepile.split(" ")[1]);
+                switch (nomCarte){
+                    case "Inspiration", "NouvelleEnergie", "Illumination", "RegardeUneDistraction",
+                            "CalmeAvantLaTempete", "TousPourUn", "PetitVoleur", "PetitePause",
+                            "BotteSecrete", "ApprendreParMesErreurs", "Trance" -> {
 
-                    while (!(pile.isEmpty())){
-                        pile2.addFirst(pile.removeLast());
-
-                        switch (nomCarte){
-                            case "Inspiration", "NouvelleEnergie", "Illumination", "RegardeUneDistraction",
-                                    "CalmeAvantLaTempete", "TousPourUn", "PetitVoleur", "PetitePause",
-                                    "BotteSecrete", "ApprendreParMesErreurs", "Trance" -> {
-
-                                carteAttaque.effetDeDeuxiemeType(joueurCo,joueurAv,nomCarte);
-                            }
-                            case "CoupDroit", "Fouette", "Fleche" -> {
-                                carteDommage.effetDeDeuxiemeType(joueurCo,joueurAv,nomCarte);
-                            }
-                            case "Oups", "JaiCompris" -> {
-                                carteExperience.effetDeDeuxiemeType(joueurCo,joueurAv,nomCarte);
-                            }
-                            case "Esquive", "Vitesse" -> {
-                                carteRiposte.effetDeDeuxiemeType(joueurCo,joueurAv,nomCarte);
-                            }
-
-                        }
-
+                        carteAttaque.effetDeDeuxiemeType(joueurCo,joueurAv,nomCarte);
+                    }
+                    case "CoupDroit", "Fouette", "Fleche" -> {
+                        carteDommage.effetDeDeuxiemeType(joueurCo,joueurAv,nomCarte);
+                    }
+                    case "Oups", "JaiCompris" -> {
+                        carteExperience.effetDeDeuxiemeType(joueurCo,joueurAv,nomCarte);
+                    }
+                    case "Esquive", "Vitesse" -> {
+                        carteRiposte.effetDeDeuxiemeType(joueurCo,joueurAv,pile,nomCarte);
                     }
 
                 }
+
+            }
+            System.out.println( "Joueur "  + joueur1.getNumJoueur()+ " " + "dommage "+ joueur1.getPointDommage()+ " " + "expérience "+ joueur1.getPointExperience());
+            System.out.println( "Joueur "  + joueur2.getNumJoueur()+ " " + "dommage "+ joueur2.getPointDommage()+ " " + "expérience "+ joueur2.getPointExperience());
 
         } catch (Exception ex) {
             System.err.println("Fichier non trouver");
             System.exit(-1);
         }
-        System.out.println(joueur1);
-        System.out.println(joueur2);
     }
 }

@@ -38,7 +38,6 @@ public abstract class carteExperience {
      */
     public static void effetDeDeuxiemeType(Joueur jCrt, Joueur jAdv , String nomCarte){
 
-        if (jCrt.getCarteEnMain() > 0){
             if (nomCarte.equals("Oups")) {
                 jCrt.setPointExperience(jCrt.getPointExperience() + 1);
 
@@ -47,6 +46,4 @@ public abstract class carteExperience {
 
             }
         }
-
-    }
 }

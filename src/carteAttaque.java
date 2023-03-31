@@ -123,7 +123,6 @@ public abstract class carteAttaque {
      */
     public static void effetDeDeuxiemeType(Joueur jCrt, Joueur jAdv, String nomCarte) {
 
-        if (jCrt.getCarteEnMain() > 0){
             switch (nomCarte){
 
                 case "CalmeAvantLaTempete":
@@ -158,10 +157,4 @@ public abstract class carteAttaque {
         }
 
     }
-    /*"Inspiration",
-            "NouvelleEnergie", "Illumination", "RegardeUneDistraction", "CalmeAvantLaTempete",
-            "TousPourUn", "PetitVoleur", "PetitePause", "Trance", "BotteSecrete",
-            "ApprendreParMesErreurs", "CoupDroit", "Fouette", "Fleche", "Oups",
-            "JaiCompris", "Esquive", "Vitesse" */
 
-}

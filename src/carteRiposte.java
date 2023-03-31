@@ -1,3 +1,5 @@
+import java.util.Deque;
+
 public abstract class carteRiposte  {
 
     /**
@@ -35,22 +37,16 @@ public abstract class carteRiposte  {
      * @param jAdv l'adversaire.
      * @param nomCarte le nom de la carte
      */
-    public static void effetDeDeuxiemeType(Joueur jCrt, Joueur jAdv, String nomCarte){
-
-        if (jCrt.getCarteEnMain() > 0){
+    public static void effetDeDeuxiemeType(Joueur jCrt, Joueur jAdv, Deque<String> pile, String nomCarte){
 
             if (nomCarte.equals("Esquive")) {
-                Principal.pile2.removeFirst();
-
                 //Enlever (dépiler) la carte au sommet.
+                pile.removeLast();
 
             }else if (nomCarte.equals("Vitesse")) {
-                String vit = Principal.pile2.getFirst();
-                Principal.pile2.addFirst(vit);
-
                 //La carte au sommet est doublée (une copie de la carte au sommet est empilée).
-
+                String carteS = pile.getLast();
+                pile.addLast(carteS);
             }
-        }
     }
 }
