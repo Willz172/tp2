@@ -27,7 +27,7 @@ public class Principal {
                     int numJoueur = Integer.parseInt(line.split(" ")[0]);
                     Joueur.validerJoueur(numJoueur, numLigne);
                     Joueur joueurCo = numJoueur==0?joueur1:joueur2;
-                    Joueur joueurAv = numJoueur==0?joueur1:joueur2;
+                    Joueur joueurAv = numJoueur==0?joueur2:joueur1;
                     String nomCarte  = (line.split(" ")[1]);
                     Carte.validerCarte(nomCarte, numLigne);
                     switch (nomCarte){
@@ -48,23 +48,25 @@ public class Principal {
                         }
                         case "Trance"->{
                             int nbrTrance = Integer.parseInt(line.split(" ")[2]);
-                            carteAttaque.effetDePremierTypeTrance(joueurCo,joueurAv,nbrTrance,nomCarte,numLigne);
+                            carteAttaque.effetDePremierTypeTrance(joueurCo,nbrTrance,nomCarte,numLigne);
 
                         }
                     }
                     numLigne++;
                 }
             while (!(pile.isEmpty())){
-                String linepile = pile.removeLast();
-                int numJoueur = Integer.parseInt(linepile.split(" ")[0]);
+                String linePile = pile.removeLast();
+                int numJoueur = Integer.parseInt(linePile.split(" ")[0]);
                 Joueur joueurCo = numJoueur==0?joueur1:joueur2;
                 Joueur joueurAv = numJoueur==0?joueur1:joueur2;
-                String nomCarte  = (linepile.split(" ")[1]);
+                String nomCarte  = (linePile.split(" ")[1]);
+                System.out.println( "Joueur "  + joueur1.getNumJoueur()+ " " + "dommage "+ joueur1.getPointDommage()+ " " + "expérience "+ joueur1.getPointExperience());
+                System.out.println( "Joueur "  + joueur2.getNumJoueur()+ " " + "dommage "+ joueur2.getPointDommage()+ " " + "expérience "+ joueur2.getPointExperience());
+                System.out.println("");
                 switch (nomCarte){
                     case "Inspiration", "NouvelleEnergie", "Illumination", "RegardeUneDistraction",
                             "CalmeAvantLaTempete", "TousPourUn", "PetitVoleur", "PetitePause",
                             "BotteSecrete", "ApprendreParMesErreurs", "Trance" -> {
-
                         carteAttaque.effetDeDeuxiemeType(joueurCo,joueurAv,nomCarte);
                     }
                     case "CoupDroit", "Fouette", "Fleche" -> {
@@ -76,7 +78,6 @@ public class Principal {
                     case "Esquive", "Vitesse" -> {
                         carteRiposte.effetDeDeuxiemeType(joueurCo,joueurAv,pile,nomCarte);
                     }
-
                 }
 
             }

@@ -11,14 +11,7 @@ public abstract class carteExperience {
     public static void effetDePremierType(Joueur jCrt, String nomCarte, int numLigne){
 
         if (jCrt.getCarteEnMain() > 0) {
-
-            if (nomCarte.equals("Oups")) {
                 jCrt.setCarteEnMain(jCrt.getCarteEnMain() - 1);
-
-            } else if (nomCarte.equals("JaiCompris")) {
-                jCrt.setCarteEnMain(jCrt.getCarteEnMain() - 1);
-
-            }
         } else {
             System.out.println("Ligne: " + numLigne +" Joueur: " +
                     jCrt.getNumJoueur() + " carte: " + nomCarte
@@ -41,7 +34,8 @@ public abstract class carteExperience {
             if (nomCarte.equals("Oups")) {
                 jCrt.setPointExperience(jCrt.getPointExperience() + 1);
 
-            }else if (nomCarte.equals("JaiCompris")) {
+            }
+            if (nomCarte.equals("JaiCompris")) {
                 jCrt.setPointExperience(jCrt.getPointExperience() + 2);
 
             }

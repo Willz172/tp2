@@ -11,9 +11,7 @@ public abstract class carteAttaque {
      */
     public static void effetDePremierType(Joueur jCrt, Joueur jAdv, String nomCarte, int numLigne){
         if(jCrt.getCarteEnMain() > 0){
-
             if(jCrt.getPointAttaque()>0){
-
                 switch (nomCarte){
                     case "Inspiration" :
                         jCrt.setCarteEnMain(jCrt.getCarteEnMain() - 1);
@@ -55,9 +53,8 @@ public abstract class carteAttaque {
                     case "PetitePause":
                         jCrt.setCarteEnMain(jCrt.getCarteEnMain() - 1);
                         jCrt.setPointAttaque(jCrt.getPointAttaque() - 1);
-
                         jCrt.setCarteEnMain(jCrt.getCarteEnMain() + 1);
-                        jAdv.setPointAttaque(jAdv.getPointAttaque() - 1);
+                        jAdv.setCarteEnMain(jAdv.getCarteEnMain() - 1);
                         break;
 
                     case "BotteSecrete", "ApprendreParMesErreurs":
@@ -85,12 +82,11 @@ public abstract class carteAttaque {
      * de premier type lies a la carte Trance.
      *
      * @param jCrt le joueur courant.
-     * @param jAdv l'adversaire
      * @param nbrTrance le nombre Trance.
      * @param nomCarte le nom des cartes jouees
      * @param numLigne numero de la ligne courante.
      */
-    public static void effetDePremierTypeTrance(Joueur jCrt, Joueur jAdv, int nbrTrance,
+    public static void effetDePremierTypeTrance(Joueur jCrt, int nbrTrance,
                                                 String nomCarte, int numLigne) {
             if(nbrTrance > 0 && nbrTrance < 4){
                 if(jCrt.getPointAttaque() > 0 && jCrt.getCarteEnMain() > nbrTrance){
@@ -145,12 +141,6 @@ public abstract class carteAttaque {
                 case "BotteSecrete":
                     jCrt.setPointDommage(jCrt.getPointDommage() + 1);
                     jAdv.setPointDommage(jAdv.getPointDommage() + 3);
-                    break;
-
-                case "NouvelleEnergie", "Inspiration", "Illumination",
-                        "RegardeUneDistraction", "PetitePause", "Trance":
-
-                default:
                     break;
 
             }

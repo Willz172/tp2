@@ -4,8 +4,8 @@ public class Joueur {
     int numJoueur;
    int carteEnMain = 5;
     int pointAttaque = 1;
-    int pointDommage;
-    int pointExperience;
+    int pointDommage = 0;
+    int pointExperience = 0;
 
     /**
      * la methode numJoueur est le constructeur de la classe Joueur.
