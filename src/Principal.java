@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Principal {
 
     static Deque<String> pile = new ArrayDeque<>();
+    static Deque<String> pile2 = new ArrayDeque<>();
     public static void main(String[] args) {
         File file;
         int numLigne = 1;
@@ -32,7 +33,10 @@ public class Principal {
                     String nomCarte  = (line.split(" ")[1]);
                     Carte.validerCarte(nomCarte, numLigne);
                     switch (nomCarte){
-                        case "Inspiration", "NouvelleEnergie", "Illumination", "RegardeUneDistraction", "CalmeAvantLaTempete", "TousPourUn", "PetitVoleur", "PetitePause",  "BotteSecrete", "ApprendreParMesErreurs" -> {
+                        case "Inspiration", "NouvelleEnergie", "Illumination", "RegardeUneDistraction",
+                                "CalmeAvantLaTempete", "TousPourUn", "PetitVoleur", "PetitePause",
+                                "BotteSecrete", "ApprendreParMesErreurs" -> {
+
                             carteAttaque.effetDePremierType(joueurCo,joueurAv,nomCarte,numLigne);
                         }
                         case "CoupDroit", "Fouette", "Fleche" -> {
@@ -51,11 +55,38 @@ public class Principal {
                         }
                     }
                     numLigne++;
+
+                    while (!(pile.isEmpty())){
+                        pile2.addFirst(pile.removeLast());
+
+                        switch (nomCarte){
+                            case "Inspiration", "NouvelleEnergie", "Illumination", "RegardeUneDistraction",
+                                    "CalmeAvantLaTempete", "TousPourUn", "PetitVoleur", "PetitePause",
+                                    "BotteSecrete", "ApprendreParMesErreurs", "Trance" -> {
+
+                                carteAttaque.effetDeDeuxiemeType(joueurCo,joueurAv,nomCarte);
+                            }
+                            case "CoupDroit", "Fouette", "Fleche" -> {
+                                carteDommage.effetDeDeuxiemeType(joueurCo,joueurAv,nomCarte);
+                            }
+                            case "Oups", "JaiCompris" -> {
+                                carteExperience.effetDeDeuxiemeType(joueurCo,joueurAv,nomCarte);
+                            }
+                            case "Esquive", "Vitesse" -> {
+                                carteRiposte.effetDeDeuxiemeType(joueurCo,joueurAv,nomCarte);
+                            }
+
+                        }
+
+                    }
+
                 }
 
         } catch (Exception ex) {
             System.err.println("Fichier non trouver");
             System.exit(-1);
         }
+
+
     }
 }

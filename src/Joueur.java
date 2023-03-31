@@ -7,6 +7,11 @@ public class Joueur {
     int pointDommage;
     int pointExperience;
 
+    /**
+     * la methode numJoueur est le constructeur de la classe Joueur.
+     *
+     * @param numJoueur le numero du joueur.
+     */
     public Joueur(int numJoueur) {
         this.numJoueur = numJoueur;
         this.carteEnMain = carteEnMain;
@@ -58,9 +63,16 @@ public class Joueur {
     public void setPointExperience(int pointExperience) {
         this.pointExperience += pointExperience;
     }
+
+    /**
+     * La methode ValiderJoueur permet de verifier si le numero du joueur est valide.
+     *
+     * @param numJoueur numero du joueur
+     * @param numLigne numero de la ligne courante.
+     */
     public static void validerJoueur(int numJoueur, int numLigne){
-        if(numJoueur != 0 || numJoueur != 1){
-            System.err.println("NUMERO JOUEUR INCORRECT!" + numLigne);
+        if(numJoueur != 0 && numJoueur != 1){
+            System.err.println("NUMERO JOUEUR INCORRECT!" + "Ligne:" + numLigne);
             System.exit(-1);
         }
     }
