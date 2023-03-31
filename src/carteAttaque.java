@@ -93,7 +93,7 @@ public abstract class carteAttaque {
     public static void effetDePremierTypeTrance(Joueur jCrt, Joueur jAdv, int nbrTrance,
                                                 String nomCarte, int numLigne) {
             if(nbrTrance > 0 && nbrTrance < 4){
-                if(jCrt.getPointAttaque() > 0 && jCrt.getCarteEnMain()>nbrTrance){
+                if(jCrt.getPointAttaque() > 0 && jCrt.getCarteEnMain() > nbrTrance){
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() -1);
                     jCrt.setPointAttaque(jCrt.getPointAttaque() -1);
                     jCrt.setCarteEnMain(jCrt.getCarteEnMain() -nbrTrance);

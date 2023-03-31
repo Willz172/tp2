@@ -12,7 +12,7 @@ public class Joueur {
      *
      * @param numJoueur le numero du joueur.
      */
-    public Joueur(int numJoueur) {
+    public Joueur(int numJoueur,int carteEnMain, int pointAttaque, int pointDommage, int pointExperience ) {
         this.numJoueur = numJoueur;
         this.carteEnMain = carteEnMain;
         this.pointAttaque = pointAttaque;
@@ -20,8 +20,8 @@ public class Joueur {
         this.pointExperience = pointExperience;
     }
 
-    public Joueur() {
-
+    public Joueur(int numJoueur) {
+        this(numJoueur,5,1,0,0);
     }
 
     public int getNumJoueur() {

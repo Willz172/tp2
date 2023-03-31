@@ -86,7 +86,7 @@ public class Principal {
             System.err.println("Fichier non trouver");
             System.exit(-1);
         }
-
-
+        System.out.println(joueur1);
+        System.out.println(joueur2);
     }
 }
